@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Robrecht Cannoodt &amp; Wouter Saelens" />
+
+
+<title>Overview of the functionality provided by the dynutils package</title>
+
+
+
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Overview of the functionality provided by the dynutils package</h1>
+<h4 class="author"><em>Robrecht Cannoodt &amp; Wouter Saelens</em></h4>
+
+
+
+<!-- github markdown using
+rmarkdown::render("vignettes/functionality.Rmd", output_format = "github_document")
+-->
+<div id="table-of-contents" class="section level2">
+<h2>Table of contents</h2>
+<ul>
+<li>Manipulation of lists: <a href="functionality.md#add_class-add-a-class-to-an-object"><code>add_class</code></a>, <a href="functionality.md#extend_with-extend-list-with-more-data"><code>extend_with</code></a></li>
+<li>Calculations: <a href="functionality.md#calculate_distance-compute-pairwise-distances-between-two-matrices"><code>calculate_distance</code></a>, <a href="functionality.md#project_to_segments-project-a-set-of-points-to-to-set-of-segments"><code>project_to_segments</code></a></li>
+<li>Manipulation of matrices: <a href="functionality.md#expand_matrix-add-rows-and-columns-to-a-matrix"><code>expand_matrix</code></a></li>
+<li>Scaling of matrices and vectors: <a href="functionality.md#scale_uniform-rescale-data-to-have-a-certain-center-and-max-range"><code>scale_uniform</code></a>, <a href="functionality.md#scale_minmax-rescale-data-to-a---range"><code>scale_minmax</code></a>, <a href="functionality.md#scale_quantile-cut-off-outer-quantiles-and-rescale-to-a---range"><code>scale_quantile</code></a></li>
+<li>Manipulation of functions: <a href="functionality.md#inherit_default_params-have-one-function-inherit-the-default-parameters-from-other-functions"><code>inherit_default_params</code></a></li>
+<li>Manipulation of packages: <a href="functionality.md#check_packages-easily-checking-whether-certain-packages-are-installed"><code>check_packages</code></a>, <a href="functionality.md#install_packages-install-packages-taking-into-account-the-remotes-of-another"><code>install_packages</code></a></li>
+<li>Manipulation of character vectors: <a href="functionality.md#pritt-a-friendly-version-of-glueglue"><code>pritt</code></a>, <a href="functionality.md#random_time_string-generates-a-string-very-likely-to-be-unique"><code>random_time_string</code></a></li>
+<li>Tibble helpers: <a href="functionality.md#list_as_tibble-convert-a-list-of-lists-to-a-tibble-whilst-retaining-class-information"><code>list_as_tibble</code></a>, <a href="functionality.md#tibble_as_list-convert-a-tibble-back-to-a-list-of-lists-whilst-retaining-class-information"><code>tibble_as_list</code></a>, <a href="functionality.md#extract_row_to_list-extracts-one-row-from-a-tibble-and-converts-it-to-a-list"><code>extract_row_to_list</code></a>, <a href="functionality.md#mapdf-apply-a-function-to-each-row-of-a-data-frame"><code>mapdf</code></a></li>
+</ul>
+</div>
+<div id="manipulation-of-lists" class="section level2">
+<h2>Manipulation of lists</h2>
+<div id="add_class-add-a-class-to-an-object" class="section level3">
+<h3><code>add_class</code>: Add a class to an object</h3>
+<pre><code>#&gt; $important_number
+#&gt; [1] 42
+#&gt; 
+#&gt; attr(,&quot;class&quot;)
+#&gt; [1] &quot;my_list&quot; &quot;list&quot;</code></pre>
+</div>
+<div id="extend_with-extend-list-with-more-data" class="section level3">
+<h3><code>extend_with</code>: Extend list with more data</h3>
+<pre><code>#&gt; $important_number
+#&gt; [1] 42
+#&gt; 
+#&gt; $url
+#&gt; [1] &quot;https://github.com/dynverse/dynverse&quot;
+#&gt; 
+#&gt; attr(,&quot;class&quot;)
+#&gt; [1] &quot;improved_list&quot; &quot;my_list&quot;       &quot;list&quot;</code></pre>
+</div>
+</div>
+<div id="calculations" class="section level2">
+<h2>Calculations</h2>
+<div id="calculate_distance-compute-pairwise-distances-between-two-matrices" class="section level3">
+<h3><code>calculate_distance</code>: Compute pairwise distances between two matrices</h3>
+<p>See <code>?calculate_distance</code> for the list of currently supported distances.</p>
+<pre><code>#&gt;          [,1]      [,2]      [,3]     [,4]      [,5]
+#&gt; [1,] 1.184305 0.9571034 1.1284052 1.022205 1.5531565
+#&gt; [2,] 1.078353 1.1378581 0.7076092 1.072164 0.8846294
+#&gt; [3,] 1.335627 1.4116406 1.3526085 1.239853 1.6282805</code></pre>
+<p>For euclidean distances, this is similar to calculating:</p>
+<pre><code>#&gt;          4         5         6        7         8
+#&gt; 1 1.184305 0.9571034 1.1284052 1.022205 1.5531565
+#&gt; 2 1.078353 1.1378581 0.7076092 1.072164 0.8846294
+#&gt; 3 1.335627 1.4116406 1.3526085 1.239853 1.6282805</code></pre>
+</div>
+<div id="project_to_segments-project-a-set-of-points-to-to-set-of-segments" class="section level3">
+<h3><code>project_to_segments</code>: Project a set of points to to set of segments</h3>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre><code>#&gt; List of 4
+#&gt;  $ x_proj     : num [1:25, 1:2] 0 0 0 0.278 0 ...
+#&gt;  $ distance   : num [1:25] 0.0068 0.01605 0.12144 0.00587 0.12604 ...
+#&gt;  $ segment    : int [1:25] 1 2 1 3 1 4 2 3 2 2 ...
+#&gt;  $ progression: num [1:25] 1 0.108 0.297 0.802 0 ...</code></pre>
+</div>
+</div>
+<div id="manipulation-of-matrices" class="section level2">
+<h2>Manipulation of matrices</h2>
+<div id="expand_matrix-add-rows-and-columns-to-a-matrix" class="section level3">
+<h3><code>expand_matrix</code>: Add rows and columns to a matrix</h3>
+<pre><code>#&gt;   A B C         D E         F G         H         I J
+#&gt; a 0 0 0 0.2937302 0 0.5033395 0 0.7581031 0.5476466 0
+#&gt; b 0 0 0 0.0000000 0 0.0000000 0 0.0000000 0.0000000 0
+#&gt; c 0 0 0 0.1912601 0 0.8770575 0 0.7244989 0.7117439 0
+#&gt; d 0 0 0 0.8864509 0 0.1891936 0 0.9437248 0.3889051 0
+#&gt; e 0 0 0 0.0000000 0 0.0000000 0 0.0000000 0.0000000 0</code></pre>
+</div>
+</div>
+<div id="scaling-of-matrices-and-vectors" class="section level2">
+<h2>Scaling of matrices and vectors</h2>
+<div id="scale_uniform-rescale-data-to-have-a-certain-center-and-max-range" class="section level3">
+<h3><code>scale_uniform</code>: Rescale data to have a certain center and max range</h3>
+<p>Generate a matrix from a normal distribution with a large standard deviation, centered at c(5, 5).</p>
+<p>Center the dataset at c(0, 0) with a minimum of c(-.5, -.5) and a maximum of c(.5, .5).</p>
+<p>Check the ranges and verify that the scaling is correct.</p>
+<pre><code>#&gt;            [,1] [,2]
+#&gt; [1,] -0.4061179 -0.5
+#&gt; [2,]  0.4061179  0.5
+#&gt; [1] 0 0
+#&gt; [1] 0.8122358 1.0000000</code></pre>
+</div>
+<div id="scale_minmax-rescale-data-to-a-0-1-range" class="section level3">
+<h3><code>scale_minmax</code>: Rescale data to a [0, 1] range</h3>
+<p>Check the ranges and verify that the scaling is correct.</p>
+<pre><code>#&gt;      [,1] [,2]
+#&gt; [1,]    0    0
+#&gt; [2,]    1    1</code></pre>
+</div>
+<div id="scale_quantile-cut-off-outer-quantiles-and-rescale-to-a-0-1-range" class="section level3">
+<h3><code>scale_quantile</code>: Cut off outer quantiles and rescale to a [0, 1] range</h3>
+<p>Check the ranges and verify that the scaling is correct.</p>
+<pre><code>#&gt;      [,1] [,2]
+#&gt; [1,]    0    0
+#&gt; [2,]    1    1</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+<div id="manipulation-of-functions" class="section level2">
+<h2>Manipulation of functions</h2>
+<div id="inherit_default_params-have-one-function-inherit-the-default-parameters-from-other-functions" class="section level3">
+<h3><code>inherit_default_params</code>: Have one function inherit the default parameters from other functions</h3>
+<pre><code>#&gt; function (a = 10, b = 7, c = 9) 
+#&gt; {
+#&gt;     list(x = fun1(a, b), y = fun2(c))
+#&gt; }</code></pre>
+</div>
+</div>
+<div id="manipulation-of-packages" class="section level2">
+<h2>Manipulation of packages</h2>
+<div id="check_packages-easily-checking-whether-certain-packages-are-installed" class="section level3">
+<h3><code>check_packages</code>: Easily checking whether certain packages are installed</h3>
+<pre><code>#&gt;         SCORPIUS         dynutils wubbalubbadubdub 
+#&gt;             TRUE             TRUE            FALSE
+#&gt; princurve       mlr tidyverse 
+#&gt;      TRUE      TRUE      TRUE</code></pre>
+</div>
+<div id="install_packages-install-packages-taking-into-account-the-remotes-of-another" class="section level3">
+<h3><code>install_packages</code>: Install packages taking into account the remotes of another</h3>
+<p>This is useful for installing suggested packages with GitHub remotes.</p>
+<pre><code>&gt; install_packages(&quot;SCORPIUS&quot;, package = &quot;dynmethods&quot;, prompt = TRUE)
+Following packages have to be installed: SCORPIUS
+Do you want to install these packages? (y/yes/1 or n/no/2): 1
+Installing SCORPIUS
+...
+** testing if installed package can be loaded
+* DONE (SCORPIUS)
+Installed SCORPIUS
+[1] &quot;SCORPIUS&quot;</code></pre>
+</div>
+</div>
+<div id="manipulation-of-character-vectors" class="section level2">
+<h2>Manipulation of character vectors</h2>
+<div id="pritt-a-friendly-version-of-glueglue" class="section level3">
+<h3><code>pritt</code>: A friendly version of <code>glue::glue</code></h3>
+<pre><code>#&gt; [1] &quot;a: 10&quot;
+#&gt; a: 10
+#&gt; [1] &quot;glue&quot;      &quot;character&quot;</code></pre>
+</div>
+<div id="random_time_string-generates-a-string-very-likely-to-be-unique" class="section level3">
+<h3><code>random_time_string</code>: Generates a string very likely to be unique</h3>
+<pre><code>#&gt; [1] &quot;20180718_144154__test__mMIwnRLQgq&quot;
+#&gt; [1] &quot;20180718_144154__test__X7HCfj0o6f&quot;
+#&gt; [1] &quot;20180718_144154__test__F9Y32SIQAy&quot;</code></pre>
+</div>
+</div>
+<div id="tibble-helpers" class="section level2">
+<h2>Tibble helpers</h2>
+<div id="list_as_tibble-convert-a-list-of-lists-to-a-tibble-whilst-retaining-class-information" class="section level3">
+<h3><code>list_as_tibble</code>: Convert a list of lists to a tibble whilst retaining class information</h3>
+<pre><code>#&gt; # A tibble: 2 x 4
+#&gt;       a b         c      .object_class
+#&gt;   &lt;dbl&gt; &lt;list&gt;    &lt;chr&gt;  &lt;list&gt;       
+#&gt; 1     1 &lt;builtin&gt; parrot &lt;chr [2]&gt;    
+#&gt; 2     2 &lt;builtin&gt; quest  &lt;chr [2]&gt;</code></pre>
+</div>
+<div id="tibble_as_list-convert-a-tibble-back-to-a-list-of-lists-whilst-retaining-class-information" class="section level3">
+<h3><code>tibble_as_list</code>: Convert a tibble back to a list of lists whilst retaining class information</h3>
+<pre><code>#&gt; [[1]]
+#&gt; $a
+#&gt; [1] 1
+#&gt; 
+#&gt; $b
+#&gt; function (x)  .Primitive(&quot;log10&quot;)
+#&gt; 
+#&gt; $c
+#&gt; [1] &quot;parrot&quot;
+#&gt; 
+#&gt; attr(,&quot;class&quot;)
+#&gt; [1] &quot;myobject&quot; &quot;list&quot;    
+#&gt; 
+#&gt; [[2]]
+#&gt; $a
+#&gt; [1] 2
+#&gt; 
+#&gt; $b
+#&gt; function (x)  .Primitive(&quot;sqrt&quot;)
+#&gt; 
+#&gt; $c
+#&gt; [1] &quot;quest&quot;
+#&gt; 
+#&gt; attr(,&quot;class&quot;)
+#&gt; [1] &quot;yourobject&quot; &quot;list&quot;</code></pre>
+</div>
+<div id="extract_row_to_list-extracts-one-row-from-a-tibble-and-converts-it-to-a-list" class="section level3">
+<h3><code>extract_row_to_list</code>: Extracts one row from a tibble and converts it to a list</h3>
+<pre><code>#&gt; $a
+#&gt; [1] 2
+#&gt; 
+#&gt; $b
+#&gt; function (x)  .Primitive(&quot;sqrt&quot;)
+#&gt; 
+#&gt; $c
+#&gt; [1] &quot;quest&quot;
+#&gt; 
+#&gt; attr(,&quot;class&quot;)
+#&gt; [1] &quot;yourobject&quot; &quot;list&quot;</code></pre>
+</div>
+<div id="mapdf-apply-a-function-to-each-row-of-a-data-frame" class="section level3">
+<h3><code>mapdf</code>: Apply a function to each row of a data frame</h3>
+<p>The <code>mapdf</code> functions apply a function on each row of a data frame. They are based heavily on purrr’s <code>map</code> functions.</p>
+<pre><code>#&gt; [[1]]
+#&gt; [1] &quot;myobject&quot; &quot;list&quot;    
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] &quot;yourobject&quot; &quot;list&quot;</code></pre>
+<p>Or use an anonymous function.</p>
+<pre><code>#&gt; [[1]]
+#&gt; [1] &quot;0_parrot&quot;
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] &quot;1.4142135623731_quest&quot;</code></pre>
+<p>Or even a formula.</p>
+<pre><code>#&gt; [[1]]
+#&gt; function (x)  .Primitive(&quot;log10&quot;)
+#&gt; 
+#&gt; [[2]]
+#&gt; function (x)  .Primitive(&quot;sqrt&quot;)</code></pre>
+<p>There are many more variations available. See <code>?mapdf</code> for more info.</p>
+<pre><code>#&gt; [1] FALSE  TRUE
+#&gt; [1] &quot;~parrot~&quot; &quot;~quest~&quot;
+#&gt; [1] 6 5
+#&gt; [1] 1.234 2.468</code></pre>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
