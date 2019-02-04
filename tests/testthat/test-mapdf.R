@@ -9,8 +9,6 @@ tib <- tibble(
   .object_class = list(c("myobject", "list"), c("yourobject", "list"))
 )
 
-# mapdf mapdf_lgl mapdf_chr mapdf_int mapdf_dbl, mapdf_dfr mapdf_dfc walkdf mapdf_if mapdf_at
-
 test_that("Testing whether mapdf works", {
   expect_equal(mapdf(tib, class), tib$.object_class)
   expect_equal(mapdf(tib, function(row) class(row)), tib$.object_class)
@@ -24,7 +22,7 @@ test_that("Testing whether mapdf_lgl works", {
 })
 
 test_that("Testing whether mapdf_chr works", {
-  expect_equal(mapdf_chr(tib, glue::collapse), c("1.Primitive(\"log10\")parrotc(1, 2, 3)TRUE", "2.Primitive(\"sqrt\")questc(\"a\", \"b\", \"c\")FALSE"))
+  expect_equal(mapdf_chr(tib, glue::glue_collapse), c("1.Primitive(\"log10\")parrotc(1, 2, 3)TRUE", "2.Primitive(\"sqrt\")questc(\"a\", \"b\", \"c\")FALSE"))
   expect_equal(mapdf_chr(tib, function(row) paste0("~", row$e, "~")), paste0("~", tib$e, "~"))
   expect_equal(mapdf_chr(tib, ~.$c), tib$c)
 })
@@ -45,6 +43,22 @@ test_that("Testing whether mapdf_dfr works", {
     data_frame(a = 1, b = row$e, c = row$a)
   })
   expect_equal(out, data_frame(a = c(1, 1), b = c(TRUE, FALSE), c = c(1, 2)))
+})
+
+test_that("Testing whether mapdf_lat works", {
+  out <- mapdf_lat(tib, function(row) {
+    list(a = 1, b = row$e, c = row$a, d = list(row$c, row$a)) %>% add_class("test")
+  })
+  expected_out <- tibble(
+    a = c(1, 1),
+    b = c(TRUE, FALSE),
+    c = c(1, 2),
+    d = list(list("parrot", 1), list("quest", 2)),
+    .object_class = list(c("test", "list"), c("test", "list"))
+  )
+
+  expect_equal(colnames(out), colnames(expected_out))
+  walk(colnames(out), ~ expect_equal(out[[.]], expected_out[[.]]))
 })
 
 test_that("Testing whether mapdf_dfc works", {

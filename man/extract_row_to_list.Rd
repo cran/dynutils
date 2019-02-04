@@ -9,7 +9,7 @@ extract_row_to_list(tib, row_id)
 \arguments{
 \item{tib}{the tibble}
 
-\item{row_id}{the index of the row to be selected}
+\item{row_id}{the index of the row to be selected, or alternatively an expression which will be evaluated to such an index}
 }
 \value{
 the corresponding row from the tibble as a list
@@ -28,6 +28,7 @@ tib <- tibble(
 )
 
 extract_row_to_list(tib, 2)
+extract_row_to_list(tib, which(a == 1))
 }
 \seealso{
 list_as_tibble tibble_as_list mapdf

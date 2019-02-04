@@ -1,5 +1,5 @@
 ## ----setup1, echo=FALSE, message=FALSE-----------------------------------
-knitr::opts_chunk$set(comment = "#>", collapse = TRUE, echo = FALSE)
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 library(dplyr)
 library(readr)
 library(purrr)
@@ -169,4 +169,40 @@ tib %>% mapdf_lgl(~ .$a > 1)
 tib %>% mapdf_chr(~ paste0("~", .$c, "~"))
 tib %>% mapdf_int(~ nchar(.$c))
 tib %>% mapdf_dbl(~ .$a * 1.234)
+
+## ----safe_tempdir--------------------------------------------------------
+safe_tempdir("samson")
+
+## ----all_in, error=TRUE--------------------------------------------------
+library(assertthat)
+assert_that(c(1, 2) %all_in% c(0, 1, 2, 3, 4))
+assert_that("a" %all_in% letters)
+assert_that("A" %all_in% letters)
+assert_that(1:10 %all_in% letters)
+
+## ----hasnames, error=TRUE------------------------------------------------
+assert_that(li %has_names% "a")
+assert_that(li %has_names% "c")
+assert_that(li %has_names% letters)
+
+## ----is_single_numeric, error=TRUE---------------------------------------
+assert_that(is_single_numeric(1))
+assert_that(is_single_numeric(Inf))
+assert_that(is_single_numeric(1.6))
+assert_that(is_single_numeric(NA))
+assert_that(is_single_numeric(1:6))
+assert_that(is_single_numeric("pie"))
+
+## ----is_bounded, error=TRUE----------------------------------------------
+assert_that(is_bounded(10))
+assert_that(is_bounded(10:30))
+assert_that(is_bounded(Inf))
+assert_that(is_bounded(10, lower_bound = 20))
+assert_that(is_bounded(
+  10,
+  lower_bound = 20,
+  lower_closed = TRUE,
+  upper_bound = 30,
+  upper_closed = FALSE
+))
 
