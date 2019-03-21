@@ -73,6 +73,22 @@ ggplot() +
 
 str(fit)
 
+## ----calculate_mean------------------------------------------------------
+calculate_arithmetic_mean(0.1, 0.5, 0.9)
+calculate_geometric_mean(0.1, 0.5, 0.9)
+calculate_harmonic_mean(0.1, 0.5, 0.9)
+calculate_mean(.1, .5, .9, method = "harmonic")
+
+# example with multiple vectors
+calculate_arithmetic_mean(c(0.1, 0.9), c(0.2, 1))
+
+# example with a list of vectors
+vectors <- list(c(0.1, 0.2), c(0.4, 0.5))
+calculate_geometric_mean(vectors)
+
+# example of weighted means
+calculate_geometric_mean(c(0.1, 10), c(0.9, 20), c(0.5, 2), weights = c(1, 2, 5))
+
 ## ----expand_matrix-------------------------------------------------------
 x <- matrix(runif(12), ncol = 4, dimnames = list(c("a", "c", "d"), c("D", "F", "H", "I")))
 expand_matrix(x, letters[1:5], LETTERS[1:10], fill = 0)
