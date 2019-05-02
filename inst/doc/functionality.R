@@ -3,7 +3,6 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 library(dplyr)
 library(readr)
 library(purrr)
-library(tidyr)
 library(stringr)
 library(ggplot2)
 library(dynutils)
@@ -137,14 +136,6 @@ check_packages(c("princurve", "mlr", "tidyverse"))
 
 ## ----install_packages, eval = FALSE--------------------------------------
 #  install_packages("SCORPIUS", package = "dynmethods", prompt = TRUE)
-
-## ----pritt---------------------------------------------------------------
-a <- 10
-pritt("a: {a}")
-
-comparison <- glue::glue("a: {a}")
-comparison            # glue::glue prints differently than base R
-class(comparison)     # glue::glue adds a class to the output
 
 ## ----random_time_string--------------------------------------------------
 random_time_string("test")

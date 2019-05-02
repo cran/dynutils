@@ -2,50 +2,42 @@
 % Please edit documentation in R/calculate_distance.R
 \name{calculate_distance}
 \alias{calculate_distance}
-\alias{correlation_distance}
-\alias{manhattan_distance}
-\alias{euclidean_distance}
-\title{Distance metrics}
+\alias{list_distance_methods}
+\alias{calculate_similarity}
+\alias{list_similarity_methods}
+\title{Calculate (column-wise) distances/similarity between two matrices}
 \usage{
-calculate_distance(x, y = NULL, method = c("euclidean", "manhattan",
-  "spearman", "pearson", "kendall"))
+calculate_distance(x, y = NULL, method = c("pearson", "spearman",
+  "cosine", "euclidean", "manhattan"), margin = 1)
 
-correlation_distance(x, y = NULL, method = c("pearson", "kendall",
-  "spearman"), use = "everything")
+list_distance_methods()
 
-manhattan_distance(x, y = NULL)
+calculate_similarity(x, y = NULL, margin = 1, method = c("spearman",
+  "pearson", "cosine"))
 
-euclidean_distance(x, y = NULL)
+list_similarity_methods()
 }
 \arguments{
-\item{x}{A numeric matrix}
+\item{x}{A numeric matrix, dense or sparse.}
 
-\item{y}{(Optional) a numeric matrix, with \code{ncol(x) == ncol(y)}.}
+\item{y}{(Optional) a numeric matrix, dense or sparse, with \code{nrow(x) == nrow(y)}.}
 
-\item{method}{Distance method to use. Options are:
-\itemize{
-  \item euclidean: \code{\link{euclidean_distance}}
-  \item manhattan: \code{\link{manhattan_distance}}
-  \item spearman, pearson, or kendall: \code{\link{correlation_distance}}
-}}
+\item{method}{Which distance method to use. Options are: \code{"cosine"}, \code{"pearson"}, \code{"spearman"}, \code{"euclidean"}, and \code{"manhattan"}.}
 
-\item{use}{an optional character string giving a
-    method for computing covariances in the presence
-    of missing values.  This must be (an abbreviation of) one of the strings
-    \code{"everything"}, \code{"all.obs"}, \code{"complete.obs"},
-    \code{"na.or.complete"}, or \code{"pairwise.complete.obs"}.}
+\item{margin}{Which margin to use for the pairwise comparison. 1 => rowwise, 2 => columnwise.}
 }
 \description{
-Calculate (pairwise) distances between two matrices
+These matrices can be dense or sparse.
 }
 \examples{
 ## Generate two matrices with 50 and 100 samples
-x <- matrix(rnorm(50*10, mean = 0, sd = 1), ncol = 10)
-y <- matrix(rnorm(100*10, mean = 1, sd = 2), ncol = 10)
+library(Matrix)
+x <- Matrix::rsparsematrix(50, 1000, .01)
+y <- Matrix::rsparsematrix(100, 1000, .01)
 
 dist_euclidean <- calculate_distance(x, y, method = "euclidean")
 dist_manhattan <- calculate_distance(x, y, method = "manhattan")
 dist_spearman <- calculate_distance(x, y, method = "spearman")
 dist_pearson <- calculate_distance(x, y, method = "pearson")
-dist_kendall <- calculate_distance(x, y, method = "kendall")
+dist_angular <- calculate_distance(x, y, method = "cosine")
 }

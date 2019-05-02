@@ -22,7 +22,7 @@ test_that("Testing whether mapdf_lgl works", {
 })
 
 test_that("Testing whether mapdf_chr works", {
-  expect_equal(mapdf_chr(tib, glue::glue_collapse), c("1.Primitive(\"log10\")parrotc(1, 2, 3)TRUE", "2.Primitive(\"sqrt\")questc(\"a\", \"b\", \"c\")FALSE"))
+  expect_equal(mapdf_chr(tib, paste, collapse = ""), c("1.Primitive(\"log10\")parrotc(1, 2, 3)TRUE", "2.Primitive(\"sqrt\")questc(\"a\", \"b\", \"c\")FALSE"))
   expect_equal(mapdf_chr(tib, function(row) paste0("~", row$e, "~")), paste0("~", tib$e, "~"))
   expect_equal(mapdf_chr(tib, ~.$c), tib$c)
 })
@@ -40,9 +40,9 @@ test_that("Testing whether mapdf_dbl works", {
 
 test_that("Testing whether mapdf_dfr works", {
   out <- mapdf_dfr(tib, function(row) {
-    data_frame(a = 1, b = row$e, c = row$a)
+    tibble(a = 1, b = row$e, c = row$a)
   })
-  expect_equal(out, data_frame(a = c(1, 1), b = c(TRUE, FALSE), c = c(1, 2)))
+  expect_equal(out, tibble(a = c(1, 1), b = c(TRUE, FALSE), c = c(1, 2)))
 })
 
 test_that("Testing whether mapdf_lat works", {
@@ -63,11 +63,11 @@ test_that("Testing whether mapdf_lat works", {
 
 test_that("Testing whether mapdf_dfc works", {
   out <- mapdf_dfc(tib, function(row) {
-    o <- data_frame(row$d)
+    o <- tibble(row$d)
     colnames(o) <- row$c
     o
   })
-  expect_equal(out, data_frame(parrot = c(1,2,3), quest = c("a", "b", "c")))
+  expect_equal(out, tibble(parrot = c(1,2,3), quest = c("a", "b", "c")))
 })
 
 test_that("Testing whether walkdf works", {
