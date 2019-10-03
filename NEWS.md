@@ -1,3 +1,12 @@
+# dynutils 1.0.4
+
+ * BUG FIX `recent_news()`: do not prepend subsections.
+ 
+ * BUG FIX `switch_cran()`: add missing version variable.
+ 
+ * REMOVAL `update_news()` remove this function as R 3.6 natively
+   supports markdown news format.
+ 
 # dynutils 1.0.3 (2019-05-02)
 
  * FUNCTIONALITY: Added `test_h5_installation()`.
