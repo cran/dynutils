@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Robrecht Cannoodt &amp; Wouter Saelens" />
 
@@ -117,9 +116,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -288,7 +284,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -527,13 +524,13 @@ Installed SCORPIUS
 <div id="random_time_string-generates-a-string-very-likely-to-be-unique" class="section level3">
 <h3><code>random_time_string</code>: Generates a string very likely to be unique</h3>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">random_time_string</span>(<span class="st">&quot;test&quot;</span>)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">#&gt; [1] &quot;20191003_113538__test__syYeN626jT&quot;</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co">#&gt; [1] &quot;20200221_114636__test__syYeN626jT&quot;</span></a>
 <a class="sourceLine" id="cb20-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb20-4" data-line-number="4"><span class="kw">random_time_string</span>(<span class="st">&quot;test&quot;</span>)</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">#&gt; [1] &quot;20191003_113538__test__e6MCnXcJM7&quot;</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">#&gt; [1] &quot;20200221_114636__test__e6MCnXcJM7&quot;</span></a>
 <a class="sourceLine" id="cb20-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb20-7" data-line-number="7"><span class="kw">random_time_string</span>(<span class="st">&quot;test&quot;</span>)</a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co">#&gt; [1] &quot;20191003_113538__test__9pFJ5mxS3R&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co">#&gt; [1] &quot;20200221_114636__test__9pFJ5mxS3R&quot;</span></a></code></pre></div>
 </div>
 </div>
 <div id="tibble-helpers" class="section level2">
@@ -639,7 +636,7 @@ Installed SCORPIUS
 <div id="safe_tempdir-create-an-empty-temporary-directory-and-return-its-path" class="section level3">
 <h3><code>safe_tempdir</code>: Create an empty temporary directory and return its path</h3>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">safe_tempdir</span>(<span class="st">&quot;samson&quot;</span>)</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">#&gt; [1] &quot;/tmp/RtmpBcc18f/file1e155292d422/samson&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="co">#&gt; [1] &quot;/tmp/RtmprOEuV8/file573153d2d79b/samson&quot;</span></a></code></pre></div>
 </div>
 </div>
 <div id="assertion-helpers" class="section level2">
