@@ -1,7 +1,7 @@
 Package: dynutils
 Type: Package
 Title: Common Functionality for the 'dynverse' Packages
-Version: 1.0.5
+Version: 1.0.6
 Authors@R: c(
     person(
       "Robrecht", 
@@ -26,7 +26,7 @@ License: MIT + file LICENSE
 URL: https://github.com/dynverse/dynutils
 BugReports: https://github.com/dynverse/dynutils/issues
 LazyData: TRUE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Depends: R (>= 3.0.0)
 Imports: assertthat, crayon, desc, dplyr, magrittr, Matrix, methods,
         proxyC, purrr, Rcpp, remotes, stringr, tibble
@@ -35,10 +35,10 @@ LinkingTo: Rcpp
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2020-02-21 10:46:37 UTC; rcannood
+Packaged: 2021-03-22 11:24:41 UTC; rcannood
 Author: Robrecht Cannoodt [aut, cre] (<https://orcid.org/0000-0003-3641-729X>,
     rcannood),
   Wouter Saelens [aut] (<https://orcid.org/0000-0002-7114-6248>, zouter)
 Maintainer: Robrecht Cannoodt <rcannood@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-02-21 12:30:02 UTC
+Date/Publication: 2021-03-22 12:50:02 UTC
