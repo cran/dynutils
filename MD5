@@ -1,7 +1,7 @@
-cfaac4514a25c22522d50186d25d3da0 *DESCRIPTION
+8510aa87df9d876cdbe76d51fcfa643a *DESCRIPTION
 ef3d9f056adaa322680184035912700f *LICENSE
 246edeab46c29b2a202d37070ffd69ba *NAMESPACE
-5c9dbde5719e9fb33f6d81c9470867ef *NEWS.md
+dc6e839ed9deb7b83a555d3c29010611 *NEWS.md
 dcdf2491b0e62a545623862a87d55529 *R/RcppExports.R
 6f7fc8ddd74f0326bf2b59a523681cf7 *R/add_class.R
 93ee58dfa8e9d0165a0aadbc62cfb01a *R/assertions.R
@@ -11,7 +11,7 @@ e2b7b0caa56d6a39e5f74f05f1ba7546 *R/check_packages.R
 cdbbf9a1f8aea5c2df485b414eed39ad *R/development.R
 ebced609202a59d493b476c3aac3fe8d *R/expand_matrix.R
 aa0987fdaaa50b3bf720eef589eb9cbe *R/extend_with.R
-c589a1bec773c845c2229d0a547c230c *R/h5.R
+eccf89678a8a7f364a3addafdd2f7e76 *R/h5.R
 56ddd7a01d957f768e214bf3ff7d1286 *R/inherit_default_params.R
 54d7dba8e284ec639517ca1e31b66a83 *R/install_packages.R
 ad9da1318face1a62868506526ccb6b2 *R/mapdf.R
@@ -27,7 +27,7 @@ ed5a6e94e1159f1aafdcfc1c82c27d49 *R/spearman_rank_sparse.R
 97438e22f9f6789b6c35f75e506e56ab *build/vignette.rds
 a60b55d68196751eae1016f1871240de *inst/doc/functionality.R
 fd437c3c797311ac07d31ffd0e74d86c *inst/doc/functionality.Rmd
-4f7d145fcbf87ea6aa77b79cc43edf02 *inst/doc/functionality.html
+826c6d6991bc74aa1e44e9906cb0ae45 *inst/doc/functionality.html
 c3db2b03d9fad3aa6837b3f565dfdebd *man/add_class.Rd
 6bc340f4659bf12f836063f6dbdd2329 *man/all_in.Rd
 b5ac523861808607b014847cb3797765 *man/apply_minmax_scale.Rd
@@ -72,7 +72,7 @@ e98edf1dd851bb968f099085613e1641 *tests/testthat.R
 dbb99d66a04da64c942eeb3d2aad76a4 *tests/testthat/test-check_packages.R
 7485242237d66f602ee1126cbe4000c2 *tests/testthat/test-expand_matrix.R
 8faa7d5a28c69f65e45e8ff451fc705b *tests/testthat/test-extend_with.R
-057e29b12553afd78ba1f7b0ca48a03f *tests/testthat/test-h5.R
+ab9e302bf557b200c0a2f78471fac0ca *tests/testthat/test-h5.R
 5ce31da95e0ab2cae64f31550e6957c1 *tests/testthat/test-inherit_default_params.R
 eb500b1fea1726787b4e1cc25de6caa0 *tests/testthat/test-mapdf.R
 900fd5789d675deb11cbb4c5072259e4 *tests/testthat/test-news.R
