@@ -1,7 +1,6 @@
 ## ----setup1, echo=FALSE, message=FALSE----------------------------------------
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 library(dplyr)
-library(readr)
 library(purrr)
 library(stringr)
 library(ggplot2)
@@ -9,7 +8,7 @@ library(dynutils)
 set.seed(1)
 
 ## ----echo=FALSE, results='asis'-----------------------------------------------
-lines <- read_lines("functionality.Rmd")
+lines <- readLines("functionality.Rmd")
 headings <- c(which(grepl("^## ", lines)), length(lines))
 subheadings <- which(grepl("^### .*`", lines))
 
