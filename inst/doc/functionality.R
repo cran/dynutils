@@ -134,7 +134,7 @@ check_packages("SCORPIUS", "dynutils", "wubbalubbadubdub")
 check_packages(c("princurve", "mlr", "tidyverse"))
 
 ## ----install_packages, eval = FALSE-------------------------------------------
-#  install_packages("SCORPIUS", package = "dynmethods", prompt = TRUE)
+# install_packages("SCORPIUS", package = "dynmethods", prompt = TRUE)
 
 ## ----random_time_string-------------------------------------------------------
 random_time_string("test")
@@ -180,26 +180,33 @@ tib %>% mapdf_dbl(~ .$a * 1.234)
 safe_tempdir("samson")
 
 ## ----all_in, error=TRUE-------------------------------------------------------
+try({
 library(assertthat)
 assert_that(c(1, 2) %all_in% c(0, 1, 2, 3, 4))
 assert_that("a" %all_in% letters)
 assert_that("A" %all_in% letters)
 assert_that(1:10 %all_in% letters)
+})
 
 ## ----hasnames, error=TRUE-----------------------------------------------------
+try({
 assert_that(li %has_names% "a")
 assert_that(li %has_names% "c")
 assert_that(li %has_names% letters)
+})
 
 ## ----is_single_numeric, error=TRUE--------------------------------------------
+try({
 assert_that(is_single_numeric(1))
 assert_that(is_single_numeric(Inf))
 assert_that(is_single_numeric(1.6))
 assert_that(is_single_numeric(NA))
 assert_that(is_single_numeric(1:6))
 assert_that(is_single_numeric("pie"))
+})
 
 ## ----is_bounded, error=TRUE---------------------------------------------------
+try({
 assert_that(is_bounded(10))
 assert_that(is_bounded(10:30))
 assert_that(is_bounded(Inf))
@@ -211,4 +218,5 @@ assert_that(is_bounded(
   upper_bound = 30,
   upper_closed = FALSE
 ))
+})
 
